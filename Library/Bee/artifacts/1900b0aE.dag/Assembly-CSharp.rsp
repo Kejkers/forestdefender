@@ -338,8 +338,10 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/VSSettingsProvider.ref.dll"
 "Assets/Scripts/Control/Bow.cs"
+"Assets/Scripts/Control/Dagger.cs"
 "Assets/Scripts/Control/MainCharacter.cs"
 "Assets/Scripts/Control/Projectile.cs"
+"Assets/Scripts/Enemies/BaseEnemy.cs"
 "Assets/Scripts/Enemies/BaseWalker.cs"
 "Assets/Scripts/Enemies/SimpleWalker.cs"
 -langversion:8.0
