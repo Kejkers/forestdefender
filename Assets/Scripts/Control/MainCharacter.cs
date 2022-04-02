@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public delegate void PlayerHpIncrease(float value);
+
 public class MainCharacter : MonoBehaviour
 {
     private GameObject cam;
@@ -29,6 +31,9 @@ public class MainCharacter : MonoBehaviour
 
     private GameObject sprite;
 
+    private GameObject dagger;
+    private bool daggerLock = false;
+
     void Start(){
         cam = transform.GetChild(1).gameObject;
         camScript = cam.GetComponent<Camera>();
@@ -39,11 +44,17 @@ public class MainCharacter : MonoBehaviour
         InvokeRepeating("Curse", 0.5f, 0.5f);
 
         resultingSpeed = moveSpeed;
-        
+
         bow = transform.GetChild(2).gameObject;
         bowScript = bow.GetComponent<Bow>();
 
         sprite = transform.GetChild(3).gameObject;
+
+        dagger = transform.GetChild(4).gameObject;
+        PlayerHpIncrease handle = Heal;
+        Debug.Log(handle == null);
+        dagger.GetComponent<Dagger>().SetHpHandleDelegate(handle);
+        dagger.SetActive(false);
     }
 
     void FixedUpdate()
@@ -53,6 +64,7 @@ public class MainCharacter : MonoBehaviour
 
     void LateUpdate() {
         Aim();
+        Dagger();
     }
 
     public void GetHurt(float value) {
@@ -60,6 +72,10 @@ public class MainCharacter : MonoBehaviour
         if (!dashLock) {
             ChangeHp(value, MINUS_SIGN);
         }
+    }
+
+    public void Heal(float value) {
+        ChangeHp(value, PLUS_SIGN);
     }
 
     public void AffectSpeed(float mul, float seconds) {
@@ -120,14 +136,14 @@ public class MainCharacter : MonoBehaviour
     private void ChangeHp(float value, int sign) {
         hp += sign * value;
         hpPanel.localScale = new Vector3(
-            hpPanel.localScale.x - (value / 100f),
+            hpPanel.localScale.x + sign * (value / 100f),
             hpPanel.localScale.y,
             hpPanel.localScale.z
         );
     }
 
     private void Curse() {
-        ChangeHp(0.5f, MINUS_SIGN);
+        ChangeHp(1.5f, MINUS_SIGN);
     }
 
     private void Aim() {
@@ -136,9 +152,14 @@ public class MainCharacter : MonoBehaviour
 
         Vector3 direction = (point - transform.position).normalized;
         float sign = (transform.position.x < point.x)? 1f : -1f;
-        Debug.Log((transform.position.x < point.x));
 
         sprite.transform.localScale = new Vector3(
+            sign * transform.localScale.x,
+            transform.localScale.y,
+            transform.localScale.z
+        );
+
+        dagger.transform.localScale = new Vector3(
             sign * transform.localScale.x,
             transform.localScale.y,
             transform.localScale.z
@@ -155,5 +176,23 @@ public class MainCharacter : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             bowScript.Fire();
         }
+    }
+
+    private void Dagger() {
+        if (!daggerLock && Input.GetMouseButtonDown(1)) {
+            StartCoroutine("DaggerStab", 0.45f);
+        }
+    }
+
+    private IEnumerator DaggerStab(float duration) {
+        daggerLock = true;
+        bow.SetActive(false);
+        dagger.SetActive(true);
+
+        yield return new WaitForSeconds(duration);
+
+        dagger.SetActive(false);
+        bow.SetActive(true);
+        daggerLock = false;
     }
 }
