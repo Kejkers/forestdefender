@@ -52,17 +52,24 @@ public class MainCharacter : MonoBehaviour
 
         dagger = transform.GetChild(4).gameObject;
         PlayerHpIncrease handle = Heal;
-        Debug.Log(handle == null);
         dagger.GetComponent<Dagger>().SetHpHandleDelegate(handle);
         dagger.SetActive(false);
     }
 
     void FixedUpdate()
     {
+        if (hp <= 0) {
+            return;
+        }
+
         Movement();
     }
 
     void LateUpdate() {
+        if (hp <= 0) {
+            return;
+        }
+
         Aim();
         Dagger();
     }
@@ -134,6 +141,10 @@ public class MainCharacter : MonoBehaviour
     }
 
     private void ChangeHp(float value, int sign) {
+        if (hp <= 0f || hp + sign * value <= 0f) {
+            return;
+        }
+
         hp += sign * value;
         hpPanel.localScale = new Vector3(
             hpPanel.localScale.x + sign * (value / 100f),
@@ -194,5 +205,17 @@ public class MainCharacter : MonoBehaviour
         dagger.SetActive(false);
         bow.SetActive(true);
         daggerLock = false;
+    }
+
+    public void OnTriggerStay2D(Collider2D col) {
+        // disable damage from our own projectiles
+        if (col.GetComponent<Projectile>() != null) {
+            return;
+        }
+
+        IDamageDealable dd = col.GetComponent<IDamageDealable>();
+        if (dd != null && dd.IsDealingDamage()) {
+            this.GetHurt(dd.GetDamage());
+        }
     }
 }

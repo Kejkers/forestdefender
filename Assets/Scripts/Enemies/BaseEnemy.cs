@@ -10,16 +10,23 @@ public class BaseEnemy : MonoBehaviour
         var proj = col.GetComponent<Projectile>();
         if (proj != null) {
             proj.ConfirmShot(this.transform);
-            MakeHurt(proj.GetDamage());
+        }
+
+        var dd = col.GetComponent<IDamageDealable>();
+        if (dd != null && dd.IsDealingDamage()) {
+            MakeHurt(dd.GetDamage());
         }
     }
 
     public void MakeHurt(float damage) {
+        Debug.Log(damage);
+        Debug.Log(" " + hp);
         hp -= damage;
+        Debug.Log(" " + hp);
         if (hp <= 0f) {
             Death();
         }
     }
 
-    protected void Death() {}
+    protected virtual void Death() {}
 }

@@ -343,6 +343,7 @@
 "Assets/Scripts/Control/Projectile.cs"
 "Assets/Scripts/Enemies/BaseEnemy.cs"
 "Assets/Scripts/Enemies/BaseWalker.cs"
+"Assets/Scripts/Enemies/IDamageDealable.cs"
 "Assets/Scripts/Enemies/SimpleWalker.cs"
 -langversion:8.0
 
