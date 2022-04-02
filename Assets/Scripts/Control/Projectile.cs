@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class Projectile : MonoBehaviour, IDamageDealable
 {
     private Rigidbody2D rgbody;
     [SerializeField]private float damage = 1f;
@@ -30,8 +30,12 @@ public class Projectile : MonoBehaviour
         StartCoroutine("DestroyMe", 2f);
     }
 
-    public float GetDamage() {
+    float IDamageDealable.GetDamage() {
         return damage;
+    }
+
+    bool IDamageDealable.IsDealingDamage() {
+        return true;
     }
 
     private IEnumerator DestroyMe(float seconds) {
