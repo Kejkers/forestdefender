@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 public delegate void PlayerHpIncrease(float value);
+public delegate void DaggerStatusControl(bool control);
 
 public class MainCharacter : MonoBehaviour
 {
@@ -55,9 +56,11 @@ public class MainCharacter : MonoBehaviour
         anim = sprite.GetComponent<Animator>();
 
         dagger = transform.GetChild(4).gameObject;
-        PlayerHpIncrease handle = Heal;
-        dagger.GetComponent<Dagger>().SetHpHandleDelegate(handle);
+        PlayerHpIncrease hphandle = Heal;
+        dagger.GetComponent<Dagger>().SetHpHandleDelegate(hphandle);
+
         dagger.SetActive(false);
+
     }
 
     void FixedUpdate()
@@ -160,6 +163,9 @@ public class MainCharacter : MonoBehaviour
     private void ChangeHp(float value, int sign) {
         if (hp <= 0f || hp + sign * value <= 0f) {
             hp = 0f;
+            return;
+        } else if (hp >= 145f) {
+            hp = 150f;
             return;
         }
 

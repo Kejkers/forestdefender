@@ -344,6 +344,7 @@
 "Assets/Scripts/Control/ProjectileExplosive.cs"
 "Assets/Scripts/Control/Ricochete.cs"
 "Assets/Scripts/Control/WeaponGrade.cs"
+"Assets/Scripts/Control/WorldBorder.cs"
 "Assets/Scripts/Enemies/BaseEnemy.cs"
 "Assets/Scripts/Enemies/BaseWalker.cs"
 "Assets/Scripts/Enemies/EnemyParticipant.cs"

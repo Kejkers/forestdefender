@@ -3,9 +3,15 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - Bow
     - Dagger
+    - EnemyParticipant
+    - GroupWalkers
     - MainCharacter
     - Projectile
+    - ProjectileExplosive
+    - Ricochete
     - SimpleWalker
+    - WeaponGrade
+    - WorldBorder
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.IK.Editor.dll:
@@ -14,9 +20,13 @@ ScriptsOnlyBuild:
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
+    - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridPaintPaletteClipboard
+    - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
+    - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -26,8 +36,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -40,6 +52,89 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
   sceneClasses:
+    Assets/Scenes/Main.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 50
+      Script: {instanceID: 0}
+    - Class: 61
+      Script: {instanceID: 0}
+    - Class: 70
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 614}
+    - Class: 114
+      Script: {instanceID: 1512}
+    - Class: 114
+      Script: {instanceID: 2588}
+    - Class: 114
+      Script: {instanceID: 2638}
+    - Class: 114
+      Script: {instanceID: 2764}
+    - Class: 114
+      Script: {instanceID: 3362}
+    - Class: 114
+      Script: {instanceID: 4498}
+    - Class: 114
+      Script: {instanceID: 4552}
+    - Class: 114
+      Script: {instanceID: 5752}
+    - Class: 114
+      Script: {instanceID: 6418}
+    - Class: 114
+      Script: {instanceID: 22482}
+    - Class: 114
+      Script: {instanceID: 31886}
+    - Class: 114
+      Script: {instanceID: 42610}
+    - Class: 114
+      Script: {instanceID: 57818}
+    - Class: 114
+      Script: {instanceID: 67630}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
+      Script: {instanceID: 0}
+    - Class: 156049354
+      Script: {instanceID: 0}
+    - Class: 483693784
+      Script: {instanceID: 0}
+    - Class: 1839735485
+      Script: {instanceID: 0}
     Assets/Scenes/SampleScene.unity:
     - Class: 1
       Script: {instanceID: 0}
@@ -59,7 +154,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 70
       Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -78,15 +179,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 3360}
+      Script: {instanceID: 3362}
     - Class: 114
-      Script: {instanceID: 4548}
+      Script: {instanceID: 4498}
     - Class: 114
-      Script: {instanceID: 5748}
+      Script: {instanceID: 4552}
     - Class: 114
-      Script: {instanceID: 6254}
+      Script: {instanceID: 5752}
     - Class: 114
-      Script: {instanceID: 6414}
+      Script: {instanceID: 6258}
+    - Class: 114
+      Script: {instanceID: 6418}
+    - Class: 114
+      Script: {instanceID: 22482}
+    - Class: 114
+      Script: {instanceID: 31886}
+    - Class: 114
+      Script: {instanceID: 42610}
+    - Class: 114
+      Script: {instanceID: 57818}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -556,6 +667,12 @@ ScriptsOnlyBuild:
     className: UnityOnCancelMessageListener
   - hash:
       serializedVersion: 2
+      Hash: eaec17e5413b9d20e3c3eb6dcc2ced1f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ProjectileExplosive
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -766,7 +883,7 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
-      Hash: f4424577a8d16c8ee60700e6fa34ca35
+      Hash: eaec17e5413b9d20e3c3eb6dcc2ced1f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Projectile
@@ -1016,8 +1133,39 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 630c7d07be27e680c9430bb21fdac264
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GroupWalkers
+  - hash:
+      serializedVersion: 2
+      Hash: f82ebd16776b32e285c27d85ee6d8ab9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyParticipant
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Ricochete
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponGrade
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WorldBorder
   platform: 19
   scenePathNames:
+  - Assets/Scenes/Main.unity
   - Assets/Scenes/SampleScene.unity
   playerPath: D:/Uprs/LudumDare50/Forest defender/Forest defender/Target/Debug/Forest
     defender.exe
