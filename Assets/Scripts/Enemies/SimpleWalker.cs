@@ -11,13 +11,17 @@ public class SimpleWalker : BaseWalker, IDamageDealable
     [SerializeField]private float damage = 1f;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         player = Camera.main.transform.parent.gameObject;
+        if(anim != null) {
+            anim.SetBool("walk", true);
+        }
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (isDead) {
             return;
@@ -34,8 +38,13 @@ public class SimpleWalker : BaseWalker, IDamageDealable
     }
 
     protected override void Death() {
+        base.Death();
         isDead = true;
         StartCoroutine("Dispose");
+    }
+
+    public bool IsDead() {
+        return isDead;
     }
 
     float IDamageDealable.GetDamage() {

@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Bow
+    - Dagger
     - MainCharacter
     - Projectile
     - SimpleWalker
@@ -13,14 +14,9 @@ ScriptsOnlyBuild:
     Unity.2D.IK.Runtime.dll:
     - UnityEditor.U2D.IK.IKEditorManagerHelper
     Unity.2D.Tilemap.Editor.dll:
-    - UnityEditor.Tilemaps.GridBrush
-    - UnityEditor.Tilemaps.GridBrushEditor
-    - UnityEditor.Tilemaps.GridPaintPaletteClipboard
-    - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
-    - UnityEditor.Tilemaps.PaintableSceneViewGrid
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.SceneViewOpenTilePaletteHelper
     - UnityEditor.Tilemaps.TileDragAndDropManager
@@ -30,10 +26,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -72,25 +66,27 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 598}
+      Script: {instanceID: 614}
     - Class: 114
-      Script: {instanceID: 1518}
+      Script: {instanceID: 1512}
     - Class: 114
-      Script: {instanceID: 2560}
+      Script: {instanceID: 2554}
     - Class: 114
-      Script: {instanceID: 2766}
+      Script: {instanceID: 2588}
     - Class: 114
-      Script: {instanceID: 5746}
+      Script: {instanceID: 2638}
     - Class: 114
-      Script: {instanceID: 6252}
+      Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 30392}
+      Script: {instanceID: 3360}
     - Class: 114
-      Script: {instanceID: 39212}
+      Script: {instanceID: 4548}
     - Class: 114
-      Script: {instanceID: 39580}
+      Script: {instanceID: 5748}
     - Class: 114
-      Script: {instanceID: 39736}
+      Script: {instanceID: 6254}
+    - Class: 114
+      Script: {instanceID: 6414}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -260,6 +256,12 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
+      Hash: 4bd4f79b133b50bde2a5884cfc981aa9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Bow
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
@@ -270,6 +272,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 630c7d07be27e680c9430bb21fdac264
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SimpleWalker
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -396,6 +404,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSelectMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 459b50185a167c1d210a783633c72823
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MainCharacter
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -540,6 +554,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnCancelMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Dagger
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -746,6 +766,12 @@ ScriptsOnlyBuild:
     className: SpriteShapeController
   - hash:
       serializedVersion: 2
+      Hash: f4424577a8d16c8ee60700e6fa34ca35
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Projectile
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -762,6 +788,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: f82ebd16776b32e285c27d85ee6d8ab9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BaseWalker
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -804,6 +836,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: PositionAsUV1
+  - hash:
+      serializedVersion: 2
+      Hash: f82ebd16776b32e285c27d85ee6d8ab9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BaseEnemy
   - hash:
       serializedVersion: 2
       Hash: 87ff43d2baf3385cba327d8f803a4ebb
@@ -978,36 +1016,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: 459b50185a167c1d210a783633c72823
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MainCharacter
-  - hash:
-      serializedVersion: 2
-      Hash: f82ebd16776b32e285c27d85ee6d8ab9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SimpleWalker
-  - hash:
-      serializedVersion: 2
-      Hash: f4424577a8d16c8ee60700e6fa34ca35
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Projectile
-  - hash:
-      serializedVersion: 2
-      Hash: f82ebd16776b32e285c27d85ee6d8ab9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: BaseWalker
-  - hash:
-      serializedVersion: 2
-      Hash: 4bd4f79b133b50bde2a5884cfc981aa9
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Bow
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

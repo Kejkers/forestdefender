@@ -13,6 +13,7 @@ public class MainCharacter : MonoBehaviour
     private float hp = 100f;
     private GameObject canvas;
     private RectTransform hpPanel;
+    private GameObject upgradeEffect;
 
     private const int MINUS_SIGN = -1;
     private const int PLUS_SIGN = 1;
@@ -30,6 +31,7 @@ public class MainCharacter : MonoBehaviour
     private Bow bowScript;
 
     private GameObject sprite;
+    private Animator anim;
 
     private GameObject dagger;
     private bool daggerLock = false;
@@ -40,6 +42,7 @@ public class MainCharacter : MonoBehaviour
 
         canvas = transform.GetChild(0).gameObject;
         hpPanel = canvas.transform.GetChild(0).GetComponent<RectTransform>();
+        upgradeEffect = canvas.transform.GetChild(1).gameObject;
         // inevitable
         InvokeRepeating("Curse", 0.5f, 0.5f);
 
@@ -49,6 +52,7 @@ public class MainCharacter : MonoBehaviour
         bowScript = bow.GetComponent<Bow>();
 
         sprite = transform.GetChild(3).gameObject;
+        anim = sprite.GetComponent<Animator>();
 
         dagger = transform.GetChild(4).gameObject;
         PlayerHpIncrease handle = Heal;
@@ -85,36 +89,49 @@ public class MainCharacter : MonoBehaviour
         ChangeHp(value, PLUS_SIGN);
     }
 
+    public void UpgradeArrows() {
+        bowScript.UpgradeArrows();
+        StartCoroutine("ShowWeaponUpgrade");
+    }
+
     public void AffectSpeed(float mul, float seconds) {
         moveSpeed *= mul;
         StartCoroutine("ResetMoveSpeed", seconds);
     }
 
     private void Movement() {
+        bool move = false;
         float value = resultingSpeed * baseSpeed;
 
         if (Input.GetKey(KeyCode.W)) {
+            move = true;
             transform.Translate(
                 new Vector3(0f, value, 0f)
             );
         }
         if (Input.GetKey(KeyCode.A)) {
+            move = true;
             transform.Translate(
                 new Vector3(-value, 0f, 0f)
             );
         }
         if (Input.GetKey(KeyCode.S)) {
+            move = true;
             transform.Translate(
                 new Vector3(0f, -value, 0f)
             );
         }
         if (Input.GetKey(KeyCode.D)) {
+            move = true;
             transform.Translate(
                 new Vector3(value, 0f, 0f)
             );
         }
 
+        anim.SetBool("walk", move);
+
         if (Input.GetKey(KeyCode.LeftShift) && !dashLock) {
+            anim.SetBool("walk", true);
             StartCoroutine("Dash");
         } else if (!(Input.GetKey(KeyCode.LeftShift) && !dashLock && dashDone)) {
             dashLock = false;
@@ -142,6 +159,7 @@ public class MainCharacter : MonoBehaviour
 
     private void ChangeHp(float value, int sign) {
         if (hp <= 0f || hp + sign * value <= 0f) {
+            hp = 0f;
             return;
         }
 
@@ -199,9 +217,13 @@ public class MainCharacter : MonoBehaviour
         daggerLock = true;
         bow.SetActive(false);
         dagger.SetActive(true);
+        resultingSpeed = moveSpeed / 10f;
+        anim.SetBool("dagger", true);
 
         yield return new WaitForSeconds(duration);
 
+        anim.SetBool("dagger", false);
+        resultingSpeed = moveSpeed;
         dagger.SetActive(false);
         bow.SetActive(true);
         daggerLock = false;
@@ -217,5 +239,11 @@ public class MainCharacter : MonoBehaviour
         if (dd != null && dd.IsDealingDamage()) {
             this.GetHurt(dd.GetDamage());
         }
+    }
+
+    private IEnumerator ShowWeaponUpgrade() {
+        upgradeEffect.SetActive(true);
+        yield return new WaitForSeconds(2.5f);
+        upgradeEffect.SetActive(false);
     }
 }

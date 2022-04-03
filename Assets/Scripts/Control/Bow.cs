@@ -10,4 +10,10 @@ public class Bow : MonoBehaviour
     public void Fire() {
         GameObject proj = Instantiate(projectilesVariants[currentVariant], transform.position, transform.rotation);
     }
+
+    public void UpgradeArrows() {
+        if (currentVariant + 1 < projectilesVariants.Count) {
+            currentVariant += 1;
+        }
+    }
 }

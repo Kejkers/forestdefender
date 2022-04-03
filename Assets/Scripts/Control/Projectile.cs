@@ -7,9 +7,10 @@ public class Projectile : MonoBehaviour, IDamageDealable
     private Rigidbody2D rgbody;
     [SerializeField]private float damage = 1f;
     [SerializeField]private float impulseMultiplier = 1f;
-    private readonly float baseImpulse = 50f;
+    [SerializeField]protected float destroyDelay = 2f;
+    public const float baseImpulse = 50f;
 
-    void Start() {
+    protected void Start() {
         rgbody = GetComponent<Rigidbody2D>();
         StartCoroutine("DestroyMe", 4f);
         Launch();
@@ -23,11 +24,11 @@ public class Projectile : MonoBehaviour, IDamageDealable
         rgbody.AddForce(new Vector2(x, y), ForceMode2D.Impulse);
     }
 
-    public void ConfirmShot(Transform target) {
+    public virtual void ConfirmShot(Transform target) {
         transform.parent = target;
         rgbody.velocity = Vector2.zero;
         StopCoroutine("DestroyMe");
-        StartCoroutine("DestroyMe", 2f);
+        StartCoroutine("DestroyMe", destroyDelay);
     }
 
     float IDamageDealable.GetDamage() {
